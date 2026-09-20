@@ -1,4 +1,4 @@
-# Agent for calculating the Sleep Score of a given location
+# Agent for calculating the Sleep Score of a given person
 
 ## Course: Essentials of Artificial Intelligence
 
@@ -38,8 +38,8 @@ To implement an agent to calculate the sleep score of a person using various lif
 ### Mental Health Score
 1. **Stress component** — Invert the 1–10 self-rated stress level to a 0–100 scale (low stress → high score).
 2. **Sleep contribution** — Incorporate the already-computed Sleep Score as a secondary factor, reflecting the established link between sleep and mental health.
-3. **Combine** — Weight stress at 70% and sleep score at 30% to produce a final 0–100 Mental Health Score.
-4. **Classification** — Map the score to one of four categories: Thriving, Good, At Risk, Struggling.
+3. **Combine** — Weight stress at 60% and sleep score at 40% to produce a final 0–100 Mental Health Score.
+4. **Classification** — Classification: At Risk, Struggling, OK, Good, Thriving.
    
 
 **Input:** Per-person records with Age, Sleep Duration, Quality of Sleep, Heart Rate, Stress Level, and Sleep Disorder.
