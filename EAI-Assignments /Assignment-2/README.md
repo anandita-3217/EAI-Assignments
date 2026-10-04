@@ -78,7 +78,7 @@ These are reported for each density level (low / med / high) so the effect of cl
 ## Part C: Dynamic and Unknown Obstacles (Design Approach)
 #### TODO
 
-> Note: Parts A and B are implemented in the notebook. Part C is described as a design; a simulation can be added by randomly spawning or moving obstacles during execution and replanning with `astar`.
+> Note: Parts A and B are implemented in the notebook. 
 
 ---
 
