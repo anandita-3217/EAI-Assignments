@@ -76,9 +76,17 @@ These are reported for each density level (low / med / high) so the effect of cl
 
 
 ## Part C: Dynamic and Unknown Obstacles (Design Approach)
-#### TODO
 
-> Note: Parts A and B are implemented in the notebook. 
+> Note: Parts A and## Sensing model
+The UGV has a limited **sensor range** (Manhattan distance, e.g. 3 km) around its current position. Obstacles outside this range are invisible to it; only obstacles that come within range are added to its known map. This reflects a realistic onboard sensor rather than an all-seeing one.
+
+### Algorithm: D* Lite (incremental replanning)
+A full re-plan with A* every time a new obstacle is sensed is correct but wasteful — it discards all prior search effort and recomputes the entire path from scratch on every update. **D\* Lite** (Koenig & Likhachev, 2002) avoids this by searching backward from the goal and maintaining two cost estimates per cell:
+
+- `g(s)`: current best known cost from `s` to the goal
+- `rhs(s)`: one-step lookahead cost, `min` over neighbors `s'` of `cost(s, s') + g(s')`
+
+A cell is *consistent* when `g(s) == rhs(s)`. Only *inconsistent* cells are kept in the priority queue, so when a new obstacle is sensed, only the cells actually affected by that change are reprocessed — not the whole grid. This makes D\* Lite well suited to an agent that repeatedly senses small, local updates to an otherwise mostly-known map, which matches the UGV's sensing model above more closely than starting from zero knowledge each time.
 
 ---
 
